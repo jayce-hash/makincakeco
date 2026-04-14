@@ -8,13 +8,14 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@700;800;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --primary-color: #E2A1B7; /* Pastel Pink */
-            --primary-dark: #c48096;
-            --secondary-color: #3B3331; /* Dark Brown */
+            --primary-color: #d089d4; /* Adjusted to match the purple/pink in the logo */
+            --primary-dark: #b86ebc;
+            --secondary-color: #3B3331; /* Dark Brown background of logo */
+            --script-color: #b88661; /* Tan/bronze color for the "Co." */
             --text-color: #4a4a4a;
             --bg-color: #fdfbfb;
         }
@@ -33,9 +34,24 @@
             line-height: 1.7;
         }
 
+        /* Updated Headers to Montserrat */
         h1, h2, h3, h4 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             color: var(--secondary-color);
+        }
+
+        /* Custom Brand Name Styling */
+        .brand-makin { font-weight: 800; }
+        .brand-cake { font-weight: 800; color: var(--primary-color); }
+        .brand-co { 
+            font-family: 'Alex Brush', cursive; 
+            color: var(--script-color); 
+            text-transform: none; 
+            font-size: 1.3em; 
+            font-weight: 400;
+            margin-left: -2px; /* Pulls the Co slightly closer to the E */
         }
 
         /* Navigation */
@@ -53,18 +69,18 @@
         }
 
         .nav-brand {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
             color: var(--secondary-color);
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--secondary-color);
-            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
             margin-left: 20px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: color 0.3s;
@@ -82,7 +98,7 @@
             }
             .nav-links a {
                 margin: 0 10px;
-                font-size: 0.8rem;
+                font-size: 0.75rem;
             }
         }
 
@@ -101,36 +117,42 @@
         }
 
         .hero img {
-            max-width: 280px;
+            max-width: 250px;
             margin-bottom: 2rem;
-            /* Removed the border-radius and box-shadow to eliminate the app icon look */
         }
 
         .hero h1 {
             color: white;
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             margin-bottom: 0.5rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
+        /* Override brand colors just for the dark hero background */
+        .hero .brand-makin { color: white; }
+        .hero .brand-cake { color: var(--primary-color); }
+        .hero .brand-co { color: var(--script-color); }
+
         .tagline {
-            font-size: 1.3rem;
-            font-style: italic;
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
             color: var(--primary-color);
-            font-family: 'Playfair Display', serif;
+            margin-top: 10px;
         }
 
         /* Shared Section Styles */
         section {
-            padding: 5rem 1.5rem;
+            padding: 6rem 1.5rem;
             max-width: 1100px;
             margin: 0 auto;
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            margin-bottom: 4rem;
             position: relative;
         }
 
@@ -140,7 +162,7 @@
             width: 60px;
             height: 3px;
             background: var(--primary-color);
-            margin: 15px auto 0;
+            margin: 20px auto 0;
             border-radius: 2px;
         }
 
@@ -148,15 +170,20 @@
         .about-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 3rem;
+            gap: 4rem;
             background: white;
-            padding: 3rem;
+            padding: 4rem 3rem;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
         }
 
         @media(min-width: 768px) {
             .about-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .about-grid h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
         }
 
         .dietary-list {
@@ -167,43 +194,47 @@
         .dietary-list li {
             background: var(--bg-color);
             margin-bottom: 0.8rem;
-            padding: 0.8rem 1.5rem;
+            padding: 1rem 1.5rem;
             border-radius: 8px;
             border-left: 5px solid var(--primary-color);
-            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* Gallery */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
         .gallery-item {
-            background-color: #eee;
-            height: 300px;
+            background-color: #f5f5f5;
+            height: 350px;
             border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #888;
             font-weight: 600;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
             overflow: hidden;
             background-size: cover;
             background-position: center;
         }
 
         .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
 
         /* Testimonials */
         .testimonials {
             background-color: var(--secondary-color);
-            padding: 5rem 1.5rem;
+            padding: 6rem 1.5rem;
         }
 
         .testimonials .section-title { color: white; }
@@ -211,41 +242,30 @@
         .test-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
             max-width: 1100px;
             margin: 0 auto;
         }
 
         .review {
             background: white;
-            padding: 2.5rem;
+            padding: 3rem 2.5rem;
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             position: relative;
         }
 
-        .review::before {
-            content: '“';
-            font-family: 'Playfair Display', serif;
-            font-size: 5rem;
-            color: var(--primary-color);
-            opacity: 0.3;
-            position: absolute;
-            top: -10px;
-            left: 20px;
-        }
-
-        .review p { margin-bottom: 1.5rem; font-style: italic; z-index: 1; position: relative;}
-        .review h4 { text-align: right; color: var(--primary-color); font-size: 1.2rem; }
+        .review p { margin-bottom: 1.5rem; font-style: italic; font-weight: 300;}
+        .review h4 { text-align: right; color: var(--primary-color); font-size: 1rem; }
 
         /* Contact CTA */
         .contact-cta {
             text-align: center;
             background: white;
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border: 2px solid var(--primary-color);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+            border: 1px solid rgba(208, 137, 212, 0.2);
         }
 
         .btn {
@@ -253,19 +273,22 @@
             background-color: var(--primary-color);
             color: white;
             text-decoration: none;
-            padding: 1rem 2.5rem;
+            padding: 1.2rem 3rem;
             border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             margin: 1rem 0.5rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(226, 161, 183, 0.4);
+            box-shadow: 0 4px 15px rgba(208, 137, 212, 0.3);
         }
 
         .btn:hover {
             background-color: var(--primary-dark);
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(226, 161, 183, 0.6);
+            box-shadow: 0 8px 25px rgba(208, 137, 212, 0.4);
         }
 
         .btn.outline {
@@ -285,25 +308,27 @@
             background-color: var(--secondary-color);
             color: white;
             text-align: center;
-            padding: 3rem 2rem 2rem;
-            border-top: 5px solid var(--primary-color);
+            padding: 4rem 2rem 2rem;
         }
 
-        .social-links { margin-top: 1rem; }
+        .social-links { margin-top: 1.5rem; }
         .social-links a {
             color: var(--primary-color);
             text-decoration: none;
-            font-weight: 600;
-            margin: 0 10px;
-            font-size: 1.1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 15px;
+            font-size: 0.9rem;
             transition: color 0.3s;
         }
         .social-links a:hover { color: white; }
 
         .agency-signature {
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -312,11 +337,11 @@
             font-size: 0.75rem;
             letter-spacing: 1px;
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.4);
         }
 
         .agency-link {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             font-weight: 600;
             position: relative;
@@ -341,7 +366,9 @@
 <body>
 
     <nav>
-        <div class="nav-brand">MAKINCAKECo.</div>
+        <div class="nav-brand">
+            <span class="brand-makin">MAKIN</span><span class="brand-cake">CAKE</span><span class="brand-co">Co.</span>
+        </div>
         <div class="nav-links">
             <a href="#home">Home</a>
             <a href="#about">About</a>
@@ -353,7 +380,9 @@
 
     <div id="home" class="hero">
         <img src="IMG_5837.jpeg" alt="MAKINCAKECo. Logo">
-        <h1>MAKINCAKECo.</h1>
+        <h1>
+            <span class="brand-makin">MAKIN</span><span class="brand-cake">CAKE</span><span class="brand-co">Co.</span>
+        </h1>
         <p class="tagline">Pastry School Trained & Fueled by GOD</p>
     </div>
 
@@ -361,13 +390,13 @@
         <h2 class="section-title">Meet Your Baker</h2>
         <div class="about-grid">
             <div>
-                <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Hi, I'm Sarah Carroll!</h3>
-                <p>Welcome to MAKINCAKECo.! I am the owner, baker, and cake decorator based right here in North Richland Hills, serving the Dallas / Fort Worth area. I create custom cakes and cupcakes for any and all occasions.</p>
+                <h3>Hi, I'm Sarah Carroll!</h3>
+                <p>Welcome to <span class="brand-makin">MAKIN</span><span class="brand-cake">CAKE</span><span class="brand-co">Co.</span>! I am the owner, baker, and cake decorator based right here in North Richland Hills, serving the Dallas / Fort Worth area. I create custom cakes and cupcakes for any and all occasions.</p>
                 <br>
                 <p>Whether you are celebrating a birthday, graduation, baby shower, or just need a sweet treat, I've got you covered! <strong>You name it, I do it!</strong></p>
             </div>
             <div>
-                <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Special Accommodations</h3>
+                <h3>Special Accommodations</h3>
                 <p>Everyone deserves a delicious cake! I proudly offer specialty options to accommodate your dietary needs:</p>
                 <ul class="dietary-list">
                     <li>Gluten-Free</li>
@@ -396,15 +425,15 @@
         <h2 class="section-title">Sweet Words</h2>
         <div class="test-grid">
             <div class="review">
-                <p>Sarah made a FANTASTIC cake for our 3 year old's birthday!! I inquired about a chocolate cake with a plain white frosting... Not only did she give us an incredible base & the decorated version turned out incredible, the cake was DELICIOUS! It was a huge hit!!</p>
+                <p>"Sarah made a FANTASTIC cake for our 3 year old's birthday!! I inquired about a chocolate cake with a plain white frosting... Not only did she give us an incredible base & the decorated version turned out incredible, the cake was DELICIOUS! It was a huge hit!!"</p>
                 <h4>- Shelby G.</h4>
             </div>
             <div class="review">
-                <p>Sarah did an AMAZING job with my cake for my daughter’s graduation!! It was perfect, tasted awesome and beautiful. Highly recommend!!!</p>
+                <p>"Sarah did an AMAZING job with my cake for my daughter’s graduation!! It was perfect, tasted awesome and beautiful. Highly recommend!!!"</p>
                 <h4>- Melissa L.</h4>
             </div>
             <div class="review">
-                <p>My team tried the white chocolate raspberry cupcakes and they were delicious. Thank you Sarah for the delicious cupcakes.</p>
+                <p>"My team tried the white chocolate raspberry cupcakes and they were delicious. Thank you Sarah for the delicious cupcakes."</p>
                 <h4>- Brandy V.</h4>
             </div>
         </div>
@@ -412,16 +441,18 @@
 
     <section id="contact">
         <div class="contact-cta">
-            <h2 style="font-size: 2.2rem; margin-bottom: 1rem;">Ready to Place an Order?</h2>
-            <p style="font-size: 1.1rem; margin-bottom: 2rem;">My calendar fills up fast, so don't wait to secure your spot! Reach out today to discuss your custom cake or cupcake needs.</p>
+            <h2 class="section-title" style="margin-bottom: 2rem;">Ready to Place an Order?</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 3rem; color: #666;">My calendar fills up fast, so don't wait to secure your spot! Reach out today to discuss your custom cake or cupcake needs.</p>
             
-            <a href="tel:8174568554" class="btn">(817) 456-8554</a>
+            <a href="tel:8174568554" class="btn">Call (817) 456-8554</a>
             <a href="mailto:Sarahcarroll1012@gmail.com" class="btn outline">Email Me</a>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 MAKINCAKECo. | North Richland Hills, TX</p>
+        <p style="font-family: 'Montserrat', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">
+            &copy; 2024 <span class="brand-makin" style="color:white;">MAKIN</span><span class="brand-cake">CAKE</span><span class="brand-co">Co.</span> | North Richland Hills, TX
+        </p>
         <div class="social-links">
             <a href="https://instagram.com/MAKINCAKECo" target="_blank">Instagram</a>
             <a href="https://facebook.com/MAKINCAKECo" target="_blank">Facebook</a>
@@ -429,8 +460,8 @@
         
         <div class="agency-signature">
             <span class="signature-text">Digital Experience by</span>
-            <a href="https://jwdigital.ink" target="_blank" rel="noopener" class="agency-link">
-                JW Digital
+            <a href="https://youragencywebsite.com" target="_blank" rel="noopener" class="agency-link">
+                Your Agency Name
             </a>
         </div>
     </footer>
