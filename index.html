@@ -135,19 +135,22 @@
 
         .hero-cakes {
             width: 100%;
-            max-width: 550px; /* Increased from 350px to make the cakes much larger */
+            max-width: 550px;
             height: auto;
-            margin-bottom: 0.5rem; /* Reduced from 2rem to pull the text up tight against the image */
+            /* Using a negative margin pulls the h1 up into the transparent space of the image */
+            margin-bottom: -2.5rem; 
             filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.15));
         }
 
         .hero h1 {
             color: white;
             font-size: clamp(2.5rem, 6vw, 4.5rem);
-            margin-bottom: 0.5rem;
+            margin-top: 0;
+            /* Tightened the gap between the brand name and the tagline */
+            margin-bottom: 0.2rem; 
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-
+        
         /* Override brand colors for the dark hero background */
         .hero .brand-makin { color: white; }
         .hero .brand-cake { color: var(--primary-color); }
