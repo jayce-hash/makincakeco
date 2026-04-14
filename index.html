@@ -43,29 +43,51 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 1rem;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 1rem 2rem;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             z-index: 1000;
-            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        nav a {
+        .nav-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .nav-links a {
             text-decoration: none;
             color: var(--secondary-color);
             font-weight: 600;
-            margin: 0 15px;
+            margin-left: 20px;
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: color 0.3s;
         }
 
-        nav a:hover { color: var(--primary-color); }
+        .nav-links a:hover { color: var(--primary-color); }
+
+        @media(max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            .nav-brand {
+                margin-bottom: 0.8rem;
+            }
+            .nav-links a {
+                margin: 0 10px;
+                font-size: 0.8rem;
+            }
+        }
 
         /* Hero Section */
         .hero {
-            /* We will add a background image here! */
             background: linear-gradient(rgba(59, 51, 49, 0.7), rgba(59, 51, 49, 0.7)), url('hero-cake.jpg') center/cover;
             height: 100vh;
             display: flex;
@@ -80,9 +102,8 @@
 
         .hero img {
             max-width: 280px;
-            margin-bottom: 1.5rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin-bottom: 2rem;
+            /* Removed the border-radius and box-shadow to eliminate the app icon look */
         }
 
         .hero h1 {
@@ -150,13 +171,6 @@
             border-radius: 8px;
             border-left: 5px solid var(--primary-color);
             font-weight: 600;
-            display: flex;
-            align-items: center;
-        }
-
-        .dietary-list li::before {
-            content: '✨';
-            margin-right: 10px;
         }
 
         /* Gallery */
@@ -177,7 +191,6 @@
             font-weight: 600;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             overflow: hidden;
-            /* Placeholder for images */
             background-size: cover;
             background-position: center;
         }
@@ -267,12 +280,12 @@
             color: white;
         }
 
-        /* Footer */
+        /* Footer & Agency Signature */
         footer {
             background-color: var(--secondary-color);
             color: white;
             text-align: center;
-            padding: 2rem;
+            padding: 3rem 2rem 2rem;
             border-top: 5px solid var(--primary-color);
         }
 
@@ -286,29 +299,69 @@
             transition: color 0.3s;
         }
         .social-links a:hover { color: white; }
+
+        .agency-signature {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .agency-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .agency-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .agency-link:hover { color: #ffffff; }
+        .agency-link:hover::after { width: 100%; }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#reviews">Reviews</a>
-        <a href="#contact">Contact</a>
+        <div class="nav-brand">MAKINCAKECo.</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#contact">Contact</a>
+        </div>
     </nav>
 
     <div id="home" class="hero">
         <img src="IMG_5837.jpeg" alt="MAKINCAKECo. Logo">
         <h1>MAKINCAKECo.</h1>
-        <p class="tagline">Pastry School Trained & Fueled by GOD 🙏</p>
+        <p class="tagline">Pastry School Trained & Fueled by GOD</p>
     </div>
 
     <section id="about">
         <h2 class="section-title">Meet Your Baker</h2>
         <div class="about-grid">
             <div>
-                <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Hi, I'm Sarah Carroll! 👩🏼‍🍳</h3>
+                <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Hi, I'm Sarah Carroll!</h3>
                 <p>Welcome to MAKINCAKECo.! I am the owner, baker, and cake decorator based right here in North Richland Hills, serving the Dallas / Fort Worth area. I create custom cakes and cupcakes for any and all occasions.</p>
                 <br>
                 <p>Whether you are celebrating a birthday, graduation, baby shower, or just need a sweet treat, I've got you covered! <strong>You name it, I do it!</strong></p>
@@ -362,8 +415,8 @@
             <h2 style="font-size: 2.2rem; margin-bottom: 1rem;">Ready to Place an Order?</h2>
             <p style="font-size: 1.1rem; margin-bottom: 2rem;">My calendar fills up fast, so don't wait to secure your spot! Reach out today to discuss your custom cake or cupcake needs.</p>
             
-            <a href="tel:8174568554" class="btn">📞 (817) 456-8554</a>
-            <a href="mailto:Sarahcarroll1012@gmail.com" class="btn outline">✉️ Email Me</a>
+            <a href="tel:8174568554" class="btn">(817) 456-8554</a>
+            <a href="mailto:Sarahcarroll1012@gmail.com" class="btn outline">Email Me</a>
         </div>
     </section>
 
@@ -372,6 +425,13 @@
         <div class="social-links">
             <a href="https://instagram.com/MAKINCAKECo" target="_blank">Instagram</a>
             <a href="https://facebook.com/MAKINCAKECo" target="_blank">Facebook</a>
+        </div>
+        
+        <div class="agency-signature">
+            <span class="signature-text">Digital Experience by</span>
+            <a href="https://jwdigital.ink" target="_blank" rel="noopener" class="agency-link">
+                JW Digital
+            </a>
         </div>
     </footer>
 
