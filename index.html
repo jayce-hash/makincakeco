@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MAKINCAKECo. offers custom cakes and cupcakes in North Richland Hills, TX. Pastry school trained, offering gluten-free, dairy-free, sugar-free, and eggless options.">
+    <title>Custom Cakes & Cupcakes in DFW | MAKINCAKECo.</title>
+    <style>
+        /* CSS Styles */
+        :root {
+            --primary-color: #E2A1B7; /* Pastel Pink from logo */
+            --secondary-color: #3B3331; /* Dark Brown background from logo */
+            --text-color: #333333;
+            --bg-color: #FAFAFA;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        header img {
+            max-width: 250px;
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        h2 { font-size: 2rem; color: var(--secondary-color); margin-bottom: 1rem; text-align: center; }
+        h3 { font-size: 1.5rem; color: var(--primary-color); margin-bottom: 0.5rem; }
+        
+        .tagline {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #E2A1B7;
+        }
+
+        section {
+            padding: 3rem 1rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        @media(min-width: 768px) {
+            .about-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .dietary-list {
+            list-style-type: none;
+            margin-top: 1rem;
+        }
+
+        .dietary-list li {
+            background: #f4f4f4;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            background-color: #ddd;
+            height: 250px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            text-align: center;
+            padding: 1rem;
+            /* In production, replace background color with background-image */
+        }
+
+        .testimonials {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 1rem;
+            margin-top: 2rem;
+        }
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .review {
+            background: white;
+            color: var(--text-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .review p { margin-bottom: 1rem; font-style: italic; }
+        .review h4 { text-align: right; color: var(--secondary-color); }
+
+        .contact-cta {
+            text-align: center;
+            background: white;
+            padding: 3rem 1rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            margin: 1rem 0.5rem;
+            transition: background 0.3s;
+        }
+
+        .btn:hover { background-color: var(--primary-color); }
+
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="logo-placeholder.png" alt="MAKINCAKECo. Logo" style="background:var(--secondary-color); padding: 10px; border-radius: 10px;">
+        <h1>MAKINCAKECo.</h1>
+        <p class="tagline">Pastry School Trained & Fueled by GOD 🙏</p>
+    </header>
+
+    <section id="about">
+        <div class="about-grid">
+            <div>
+                <h2>Hi, I'm Sarah Carroll! 👩🏼‍🍳</h2>
+                <p>Welcome to MAKINCAKECo.! I am the owner, baker, and cake decorator based right here in North Richland Hills, serving the Dallas / Fort Worth area. I create custom cakes and cupcakes for any and all occasions. Whether you are celebrating a birthday, graduation, baby shower, or just need a sweet treat, I've got you covered!</p>
+                <br>
+                <p><em>"You name it, I do it!"</em></p>
+            </div>
+            <div>
+                <h3>Special Baking Accommodations</h3>
+                <p>Everyone deserves a delicious cake! I proudly offer specialty options to accommodate your dietary needs:</p>
+                <ul class="dietary-list">
+                    <li>Gluten-Free</li>
+                    <li>Dairy-Free</li>
+                    <li>Dye-Free</li>
+                    <li>Sugar-Free</li>
+                    <li>Eggless</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2>My Recent Work</h2>
+        <p style="text-align: center; margin-bottom: 2rem;">Check out some of my recent custom creations! Follow me on Instagram for more.</p>
+        <div class="gallery">
+            <div class="gallery-item">Champagne Bottle Birthday Cake</div>
+            <div class="gallery-item">Yellow Crown Cake</div>
+            <div class="gallery-item">Construction Theme Cake</div>
+            <div class="gallery-item">Vintage Heart Piping Cake</div>
+            <div class="gallery-item">Drip Cake with Heart Truffle</div>
+            <div class="gallery-item">Custom Cupcakes</div>
+        </div>
+    </section>
+
+    <div class="testimonials">
+        <h2>What People Are Saying</h2>
+        <div class="test-grid">
+            <div class="review">
+                <p>"Sarah made a FANTASTIC cake for our 3 year old's birthday!! I inquired about a chocolate cake with a plain white frosting... Not only did she give us an incredible base & the decorated version turned out incredible, the cake was DELICIOUS! It was a huge hit!!"</p>
+                <h4>- Shelby G.</h4>
+            </div>
+            <div class="review">
+                <p>"Sarah did an AMAZING job with my cake for my daughter’s graduation!! It was perfect, tasted awesome and beautiful. Highly recommend!!!"</p>
+                <h4>- Melissa L.</h4>
+            </div>
+            <div class="review">
+                <p>"My team tried the white chocolate raspberry cupcakes and they were delicious. Thank you Sarah for the delicious cupcakes."</p>
+                <h4>- Brandy V.</h4>
+            </div>
+        </div>
+    </div>
+
+    <section id="contact">
+        <div class="contact-cta">
+            <h2>Ready to Place an Order?</h2>
+            <p>My calendar fills up fast, so don't wait to secure your spot! Reach out today to discuss your custom cake or cupcake needs.</p>
+            <br>
+            <a href="tel:8174568554" class="btn">📞 Call/Text: (817) 456-8554</a>
+            <a href="mailto:Sarahcarroll1012@gmail.com" class="btn">✉️ Email Me</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 MAKINCAKECo. | North Richland Hills, TX (DFW Area)</p>
+        <p class="social-links">
+            Follow me on 
+            <a href="https://instagram.com/MAKINCAKECo" target="_blank">Instagram</a> & 
+            <a href="https://facebook.com/MAKINCAKECo" target="_blank">Facebook</a>
+        </p>
+    </footer>
+
+</body>
+</html>
