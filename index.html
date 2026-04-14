@@ -12,10 +12,10 @@
 
     <style>
         :root {
-            --primary-color: #d089d4; /* Adjusted to match the purple/pink in the logo */
+            --primary-color: #d089d4; /* Pink/Purple accent */
             --primary-dark: #b86ebc;
-            --secondary-color: #3B3331; /* Dark Brown background of logo */
-            --script-color: #b88661; /* Tan/bronze color for the "Co." */
+            --secondary-color: #3B3331; /* Dark Brown */
+            --script-color: #b88661; /* Tan/bronze */
             --text-color: #4a4a4a;
             --bg-color: #fdfbfb;
         }
@@ -34,7 +34,6 @@
             line-height: 1.7;
         }
 
-        /* Updated Headers to Montserrat */
         h1, h2, h3, h4 {
             font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
@@ -51,7 +50,7 @@
             text-transform: none; 
             font-size: 1.3em; 
             font-weight: 400;
-            margin-left: -2px; /* Pulls the Co slightly closer to the E */
+            margin-left: -2px; 
         }
 
         /* Navigation */
@@ -68,10 +67,36 @@
             align-items: center;
         }
 
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
         .nav-brand {
             font-family: 'Montserrat', sans-serif;
             font-size: 1.4rem;
             color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .header-socials {
+            display: flex;
+            gap: 12px;
+            border-left: 1px solid #eaeaea;
+            padding-left: 1.5rem;
+        }
+
+        .header-socials a {
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .header-socials a:hover {
+            color: var(--primary-dark);
+            transform: scale(1.1);
         }
 
         .nav-links a {
@@ -89,35 +114,30 @@
         .nav-links a:hover { color: var(--primary-color); }
 
         @media(max-width: 768px) {
-            nav {
-                flex-direction: column;
-                padding: 1rem;
-            }
-            .nav-brand {
-                margin-bottom: 0.8rem;
-            }
-            .nav-links a {
-                margin: 0 10px;
-                font-size: 0.75rem;
-            }
+            nav { flex-direction: column; padding: 1rem; }
+            .nav-left { flex-direction: column; gap: 0.8rem; margin-bottom: 1rem; }
+            .header-socials { border-left: none; padding-left: 0; border-top: 1px solid #eaeaea; padding-top: 0.8rem; }
+            .nav-links a { margin: 0 10px; font-size: 0.75rem; }
         }
 
         /* Hero Section */
         .hero {
-            background-color: var(--secondary-color); /* Uses her deep brand brown */
-            height: 100vh;
+            background-color: var(--secondary-color);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 0 1rem;
-            margin-top: 50px;
+            padding: 5rem 1rem 2rem;
         }
 
-        .hero img {
-            max-width: 250px;
+        .hero-cakes {
+            width: 100%;
+            max-width: 350px; /* Increase this to make the cakes larger */
+            height: auto;
             margin-bottom: 2rem;
+            filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.15));
         }
 
         .hero h1 {
@@ -127,7 +147,7 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
-        /* Override brand colors just for the dark hero background */
+        /* Override brand colors for the dark hero background */
         .hero .brand-makin { color: white; }
         .hero .brand-cake { color: var(--primary-color); }
         .hero .brand-co { color: var(--script-color); }
@@ -310,8 +330,8 @@
             padding: 4rem 2rem 2rem;
         }
 
-        .social-links { margin-top: 1.5rem; }
-        .social-links a {
+        .footer-socials { margin-top: 1.5rem; }
+        .footer-socials a {
             color: var(--primary-color);
             text-decoration: none;
             font-family: 'Montserrat', sans-serif;
@@ -322,7 +342,7 @@
             font-size: 0.9rem;
             transition: color 0.3s;
         }
-        .social-links a:hover { color: white; }
+        .footer-socials a:hover { color: white; }
 
         .agency-signature {
             margin-top: 4rem;
@@ -365,9 +385,21 @@
 <body>
 
     <nav>
-        <div class="nav-brand">
-            <span class="brand-makin">MAKIN</span><span class="brand-cake">CAKE</span><span class="brand-co">Co.</span>
+        <div class="nav-left">
+            <a href="#home" class="nav-brand">
+                <span class="brand-makin">MAKIN</span><span class="brand-cake">CAKE</span><span class="brand-co">Co.</span>
+            </a>
+            
+            <div class="header-socials">
+                <a href="https://instagram.com/MAKINCAKECo" target="_blank" aria-label="Instagram">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="https://facebook.com/MAKINCAKECo" target="_blank" aria-label="Facebook">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+            </div>
         </div>
+
         <div class="nav-links">
             <a href="#home">Home</a>
             <a href="#about">About</a>
@@ -378,7 +410,9 @@
     </nav>
 
     <div id="home" class="hero">
-        <img src="MakinCakeCo.png" alt="MAKINCAKECo. Logo"> <h1>
+        <img src="three-cakes.png" alt="MAKINCAKECo. Cakes" class="hero-cakes">
+        
+        <h1>
             <span class="brand-makin">MAKIN</span><span class="brand-cake">CAKE</span><span class="brand-co">Co.</span>
         </h1>
         <p class="tagline">Pastry School Trained & Fueled by GOD</p>
@@ -451,7 +485,7 @@
         <p style="font-family: 'Montserrat', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">
             &copy; 2024 <span class="brand-makin" style="color:white;">MAKIN</span><span class="brand-cake">CAKE</span><span class="brand-co">Co.</span> | North Richland Hills, TX
         </p>
-        <div class="social-links">
+        <div class="footer-socials">
             <a href="https://instagram.com/MAKINCAKECo" target="_blank">Instagram</a>
             <a href="https://facebook.com/MAKINCAKECo" target="_blank">Facebook</a>
         </div>
