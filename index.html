@@ -12,10 +12,10 @@
 
     <style>
         :root {
-            --primary-color: #d089d4; 
+            --primary-color: #d089d4; /* Pink/Purple accent */
             --primary-dark: #b86ebc;
-            --secondary-color: #3B3331; 
-            --script-color: #b88661; 
+            --secondary-color: #3B3331; /* Dark Brown */
+            --script-color: #b88661; /* Tan/bronze */
             --text-color: #4a4a4a;
             --bg-color: #fdfbfb;
         }
@@ -32,8 +32,6 @@
             color: var(--text-color);
             font-family: 'Poppins', sans-serif;
             line-height: 1.7;
-            display: flex;
-            flex-direction: column;
         }
 
         h1, h2, h3, h4 {
@@ -131,41 +129,47 @@
             align-items: center;
             justify-content: center;
             text-align: center;
+            /* Give the nav room at the top so it doesn't overlap the hero content */
             padding: 5rem 1rem 2rem; 
         }
 
         .hero-cakes {
             width: 100%;
-            max-width: 650px; /* Slightly backed off from 750px to keep it sharp */
+            max-width: 550px; 
             height: auto;
-            margin-bottom: -10%; /* Dialed back from -22% so it perfectly bridges the gap without overlapping */
+            /* Negative top margin pulls the whole cluster UP to counteract the top transparent space */
+            margin-top: -12%; 
+            /* Negative bottom margin pulls the text UP tight against the cakes */
+            margin-bottom: -15%; 
             filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.15));
             position: relative;
             z-index: 1;
+            /* Prevents the invisible box from blocking you from clicking things */
             pointer-events: none; 
         }
 
         .hero h1 {
             color: white;
             font-size: clamp(2.5rem, 6vw, 4.5rem);
-            margin-top: 0;
             margin-bottom: 0.5rem;
+            margin-top: 0;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             position: relative;
             z-index: 2;
         }
-        
+
+        /* Override brand colors for the dark hero background */
         .hero .brand-makin { color: white; }
         .hero .brand-cake { color: var(--primary-color); }
         .hero .brand-co { color: var(--script-color); }
 
-        .hero h4 {
-            color: var(--primary-color);
-            font-size: 1.1rem;
+        .tagline {
+            font-size: 1.2rem;
             font-weight: 300;
             letter-spacing: 3px;
             text-transform: uppercase;
-            margin-top: 0;
+            color: var(--primary-color);
+            margin-top: 0; /* Tightened */
             position: relative;
             z-index: 2;
         }
@@ -232,7 +236,7 @@
             letter-spacing: 1px;
         }
 
-        /* Gallery - Forced to 3 columns on desktop for a 2-row setup */
+        /* Gallery - Locked to 3x2 grid on desktop */
         .gallery {
             display: grid;
             grid-template-columns: 1fr; /* Stacks 1x1 on mobile */
@@ -241,7 +245,7 @@
 
         @media(min-width: 768px) {
             .gallery {
-                grid-template-columns: repeat(3, 1fr); /* Forces 3 across on desktop/tablet */
+                grid-template-columns: repeat(3, 1fr); /* Forces exactly 3 columns (2 rows of 3) on desktop */
             }
         }
 
@@ -430,7 +434,7 @@
         <h1>
             <span class="brand-makin">MAKIN</span><span class="brand-cake">CAKE</span><span class="brand-co">Co.</span>
         </h1>
-        <h4>Pastry School Trained & Fueled by GOD</h4>
+        <p class="tagline">Pastry School Trained & Fueled by GOD</p>
     </div>
 
     <section id="about">
