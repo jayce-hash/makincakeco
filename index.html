@@ -5,64 +5,133 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="MAKINCAKECo. offers custom cakes and cupcakes in North Richland Hills, TX. Pastry school trained, offering gluten-free, dairy-free, sugar-free, and eggless options.">
     <title>Custom Cakes & Cupcakes in DFW | MAKINCAKECo.</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
     <style>
-        /* CSS Styles */
         :root {
-            --primary-color: #E2A1B7; /* Pastel Pink from logo */
-            --secondary-color: #3B3331; /* Dark Brown background from logo */
-            --text-color: #333333;
-            --bg-color: #FAFAFA;
+            --primary-color: #E2A1B7; /* Pastel Pink */
+            --primary-dark: #c48096;
+            --secondary-color: #3B3331; /* Dark Brown */
+            --text-color: #4a4a4a;
+            --bg-color: #fdfbfb;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
         }
 
-        header {
-            background-color: var(--secondary-color);
-            color: white;
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--secondary-color);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
             text-align: center;
-            padding: 2rem 1rem;
         }
 
-        header img {
-            max-width: 250px;
-            margin-bottom: 1rem;
+        nav a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin: 0 15px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
         }
 
-        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-        h2 { font-size: 2rem; color: var(--secondary-color); margin-bottom: 1rem; text-align: center; }
-        h3 { font-size: 1.5rem; color: var(--primary-color); margin-bottom: 0.5rem; }
-        
+        nav a:hover { color: var(--primary-color); }
+
+        /* Hero Section */
+        .hero {
+            /* We will add a background image here! */
+            background: linear-gradient(rgba(59, 51, 49, 0.7), rgba(59, 51, 49, 0.7)), url('hero-cake.jpg') center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 1rem;
+            margin-top: 50px;
+        }
+
+        .hero img {
+            max-width: 280px;
+            margin-bottom: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
         .tagline {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-style: italic;
-            color: #E2A1B7;
+            color: var(--primary-color);
+            font-family: 'Playfair Display', serif;
         }
 
+        /* Shared Section Styles */
         section {
-            padding: 3rem 1rem;
-            max-width: 1000px;
+            padding: 5rem 1.5rem;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* About Grid */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 2rem;
+            gap: 3rem;
             background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
         @media(min-width: 768px) {
@@ -70,118 +139,182 @@
         }
 
         .dietary-list {
-            list-style-type: none;
-            margin-top: 1rem;
+            list-style: none;
+            margin-top: 1.5rem;
         }
 
         .dietary-list li {
-            background: #f4f4f4;
-            margin-bottom: 0.5rem;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            border-left: 4px solid var(--primary-color);
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-        }
-
-        .gallery-item {
-            background-color: #ddd;
-            height: 250px;
+            background: var(--bg-color);
+            margin-bottom: 0.8rem;
+            padding: 0.8rem 1.5rem;
             border-radius: 8px;
+            border-left: 5px solid var(--primary-color);
+            font-weight: 600;
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: #666;
-            text-align: center;
-            padding: 1rem;
-            /* In production, replace background color with background-image */
         }
 
-        .testimonials {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 3rem 1rem;
-            margin-top: 2rem;
+        .dietary-list li::before {
+            content: '✨';
+            margin-right: 10px;
         }
 
-        .test-grid {
+        /* Gallery */
+        .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
-            max-width: 1000px;
+        }
+
+        .gallery-item {
+            background-color: #eee;
+            height: 300px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            /* Placeholder for images */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--secondary-color);
+            padding: 5rem 1.5rem;
+        }
+
+        .testimonials .section-title { color: white; }
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
         .review {
             background: white;
-            color: var(--text-color);
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            position: relative;
         }
 
-        .review p { margin-bottom: 1rem; font-style: italic; }
-        .review h4 { text-align: right; color: var(--secondary-color); }
+        .review::before {
+            content: '“';
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: var(--primary-color);
+            opacity: 0.3;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+        }
 
+        .review p { margin-bottom: 1.5rem; font-style: italic; z-index: 1; position: relative;}
+        .review h4 { text-align: right; color: var(--primary-color); font-size: 1.2rem; }
+
+        /* Contact CTA */
         .contact-cta {
             text-align: center;
             background: white;
-            padding: 3rem 1rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 2px solid var(--primary-color);
         }
 
         .btn {
             display: inline-block;
-            background-color: var(--secondary-color);
+            background-color: var(--primary-color);
             color: white;
             text-decoration: none;
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            font-size: 1.2rem;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
             margin: 1rem 0.5rem;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(226, 161, 183, 0.4);
         }
 
-        .btn:hover { background-color: var(--primary-color); }
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(226, 161, 183, 0.6);
+        }
 
+        .btn.outline {
+            background-color: transparent;
+            color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
+            box-shadow: none;
+        }
+
+        .btn.outline:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        /* Footer */
         footer {
             background-color: var(--secondary-color);
             color: white;
             text-align: center;
-            padding: 1.5rem;
-            margin-top: 2rem;
+            padding: 2rem;
+            border-top: 5px solid var(--primary-color);
         }
 
+        .social-links { margin-top: 1rem; }
         .social-links a {
             color: var(--primary-color);
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
+            margin: 0 10px;
+            font-size: 1.1rem;
+            transition: color 0.3s;
         }
+        .social-links a:hover { color: white; }
     </style>
 </head>
 <body>
 
-    <header>
-        <img src="IMG_5837.jpeg" alt="MAKINCAKECo. Logo" style="background:var(--secondary-color); padding: 10px; border-radius: 10px;">
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div id="home" class="hero">
+        <img src="IMG_5837.jpeg" alt="MAKINCAKECo. Logo">
         <h1>MAKINCAKECo.</h1>
         <p class="tagline">Pastry School Trained & Fueled by GOD 🙏</p>
-    </header>
+    </div>
 
     <section id="about">
+        <h2 class="section-title">Meet Your Baker</h2>
         <div class="about-grid">
             <div>
-                <h2>Hi, I'm Sarah Carroll! 👩🏼‍🍳</h2>
-                <p>Welcome to MAKINCAKECo.! I am the owner, baker, and cake decorator based right here in North Richland Hills, serving the Dallas / Fort Worth area. I create custom cakes and cupcakes for any and all occasions. Whether you are celebrating a birthday, graduation, baby shower, or just need a sweet treat, I've got you covered!</p>
+                <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Hi, I'm Sarah Carroll! 👩🏼‍🍳</h3>
+                <p>Welcome to MAKINCAKECo.! I am the owner, baker, and cake decorator based right here in North Richland Hills, serving the Dallas / Fort Worth area. I create custom cakes and cupcakes for any and all occasions.</p>
                 <br>
-                <p><em>"You name it, I do it!"</em></p>
+                <p>Whether you are celebrating a birthday, graduation, baby shower, or just need a sweet treat, I've got you covered! <strong>You name it, I do it!</strong></p>
             </div>
             <div>
-                <h3>Special Baking Accommodations</h3>
+                <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Special Accommodations</h3>
                 <p>Everyone deserves a delicious cake! I proudly offer specialty options to accommodate your dietary needs:</p>
                 <ul class="dietary-list">
                     <li>Gluten-Free</li>
@@ -195,31 +328,30 @@
     </section>
 
     <section id="gallery">
-        <h2>My Recent Work</h2>
-        <p style="text-align: center; margin-bottom: 2rem;">Check out some of my recent custom creations! Follow me on Instagram for more.</p>
+        <h2 class="section-title">Recent Creations</h2>
         <div class="gallery">
-            <div class="gallery-item">Champagne Bottle Birthday Cake</div>
-            <div class="gallery-item">Yellow Crown Cake</div>
-            <div class="gallery-item">Construction Theme Cake</div>
-            <div class="gallery-item">Vintage Heart Piping Cake</div>
-            <div class="gallery-item">Drip Cake with Heart Truffle</div>
-            <div class="gallery-item">Custom Cupcakes</div>
+            <div class="gallery-item" style="background-image: url('YOUR-IMAGE-LINK-HERE.jpg');">Champagne Cake</div>
+            <div class="gallery-item" style="background-image: url('YOUR-IMAGE-LINK-HERE.jpg');">Crown Cake</div>
+            <div class="gallery-item" style="background-image: url('YOUR-IMAGE-LINK-HERE.jpg');">Construction Cake</div>
+            <div class="gallery-item" style="background-image: url('YOUR-IMAGE-LINK-HERE.jpg');">Heart Piping Cake</div>
+            <div class="gallery-item" style="background-image: url('YOUR-IMAGE-LINK-HERE.jpg');">Drip Cake</div>
+            <div class="gallery-item" style="background-image: url('YOUR-IMAGE-LINK-HERE.jpg');">Custom Cupcakes</div>
         </div>
     </section>
 
-    <div class="testimonials">
-        <h2>What People Are Saying</h2>
+    <div id="reviews" class="testimonials">
+        <h2 class="section-title">Sweet Words</h2>
         <div class="test-grid">
             <div class="review">
-                <p>"Sarah made a FANTASTIC cake for our 3 year old's birthday!! I inquired about a chocolate cake with a plain white frosting... Not only did she give us an incredible base & the decorated version turned out incredible, the cake was DELICIOUS! It was a huge hit!!"</p>
+                <p>Sarah made a FANTASTIC cake for our 3 year old's birthday!! I inquired about a chocolate cake with a plain white frosting... Not only did she give us an incredible base & the decorated version turned out incredible, the cake was DELICIOUS! It was a huge hit!!</p>
                 <h4>- Shelby G.</h4>
             </div>
             <div class="review">
-                <p>"Sarah did an AMAZING job with my cake for my daughter’s graduation!! It was perfect, tasted awesome and beautiful. Highly recommend!!!"</p>
+                <p>Sarah did an AMAZING job with my cake for my daughter’s graduation!! It was perfect, tasted awesome and beautiful. Highly recommend!!!</p>
                 <h4>- Melissa L.</h4>
             </div>
             <div class="review">
-                <p>"My team tried the white chocolate raspberry cupcakes and they were delicious. Thank you Sarah for the delicious cupcakes."</p>
+                <p>My team tried the white chocolate raspberry cupcakes and they were delicious. Thank you Sarah for the delicious cupcakes.</p>
                 <h4>- Brandy V.</h4>
             </div>
         </div>
@@ -227,21 +359,20 @@
 
     <section id="contact">
         <div class="contact-cta">
-            <h2>Ready to Place an Order?</h2>
-            <p>My calendar fills up fast, so don't wait to secure your spot! Reach out today to discuss your custom cake or cupcake needs.</p>
-            <br>
-            <a href="tel:8174568554" class="btn">📞 Call/Text: (817) 456-8554</a>
-            <a href="mailto:Sarahcarroll1012@gmail.com" class="btn">✉️ Email Me</a>
+            <h2 style="font-size: 2.2rem; margin-bottom: 1rem;">Ready to Place an Order?</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">My calendar fills up fast, so don't wait to secure your spot! Reach out today to discuss your custom cake or cupcake needs.</p>
+            
+            <a href="tel:8174568554" class="btn">📞 (817) 456-8554</a>
+            <a href="mailto:Sarahcarroll1012@gmail.com" class="btn outline">✉️ Email Me</a>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 MAKINCAKECo. | North Richland Hills, TX (DFW Area)</p>
-        <p class="social-links">
-            Follow me on 
-            <a href="https://instagram.com/MAKINCAKECo" target="_blank">Instagram</a> & 
+        <p>&copy; 2024 MAKINCAKECo. | North Richland Hills, TX</p>
+        <div class="social-links">
+            <a href="https://instagram.com/MAKINCAKECo" target="_blank">Instagram</a>
             <a href="https://facebook.com/MAKINCAKECo" target="_blank">Facebook</a>
-        </p>
+        </div>
     </footer>
 
 </body>
