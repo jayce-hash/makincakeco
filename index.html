@@ -137,14 +137,13 @@
             width: 100%;
             max-width: 550px; 
             height: auto;
-            /* Negative top margin pulls the whole cluster UP to counteract the top transparent space */
-            margin-top: -12%; 
-            /* Negative bottom margin pulls the text UP tight against the cakes */
-            margin-bottom: -15%; 
+            /* Decrease this negative number (e.g. to -8% or -5%) to push the whole group DOWN slightly into the center */
+            margin-top: -8%; 
+            /* Decrease this negative number (e.g. to -13% or -12%) to give the text a tiny bit more breathing room below the cakes */
+            margin-bottom: -13%; 
             filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.15));
             position: relative;
             z-index: 1;
-            /* Prevents the invisible box from blocking you from clicking things */
             pointer-events: none; 
         }
 
