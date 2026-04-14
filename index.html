@@ -12,10 +12,10 @@
 
     <style>
         :root {
-            --primary-color: #d089d4; /* Pink/Purple accent */
+            --primary-color: #d089d4; 
             --primary-dark: #b86ebc;
-            --secondary-color: #3B3331; /* Dark Brown */
-            --script-color: #b88661; /* Tan/bronze */
+            --secondary-color: #3B3331; 
+            --script-color: #b88661; 
             --text-color: #4a4a4a;
             --bg-color: #fdfbfb;
         }
@@ -32,6 +32,8 @@
             color: var(--text-color);
             font-family: 'Poppins', sans-serif;
             line-height: 1.7;
+            display: flex;
+            flex-direction: column;
         }
 
         h1, h2, h3, h4 {
@@ -120,7 +122,7 @@
             .nav-links a { margin: 0 10px; font-size: 0.75rem; }
         }
 
-        /* Hero Section */
+        /* Hero Section - True Centering */
         .hero {
             background-color: var(--secondary-color);
             min-height: 100vh;
@@ -129,44 +131,43 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            /* Adjusted padding to perfectly visually center it with the fixed nav */
-            padding: 4rem 1rem 0; 
+            padding: 5rem 1rem 2rem; 
         }
 
         .hero-cakes {
             width: 100%;
-            max-width: 550px;
+            max-width: 750px; /* Forced much larger */
             height: auto;
-            /* Cranked up using a percentage to eat up that massive transparent gap */
-            margin-bottom: -18%; 
+            margin-bottom: -22%; /* Aggressive pull-up to kill the transparent box */
             filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.15));
             position: relative;
             z-index: 1;
+            pointer-events: none; /* Stops the giant invisible box from blocking clicks */
         }
 
         .hero h1 {
             color: white;
             font-size: clamp(2.5rem, 6vw, 4.5rem);
             margin-top: 0;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.5rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            /* Pulls the text up to the front so the invisible image box doesn't cover it */
             position: relative;
             z-index: 2;
         }
         
-        /* Override brand colors for the dark hero background */
         .hero .brand-makin { color: white; }
         .hero .brand-cake { color: var(--primary-color); }
         .hero .brand-co { color: var(--script-color); }
 
-        .tagline {
-            font-size: 1.2rem;
+        .hero h4 {
+            color: var(--primary-color);
+            font-size: 1.1rem;
             font-weight: 300;
             letter-spacing: 3px;
             text-transform: uppercase;
-            color: var(--primary-color);
-            margin-top: 10px;
+            margin-top: 0;
+            position: relative;
+            z-index: 2;
         }
 
         /* Shared Section Styles */
@@ -423,7 +424,7 @@
         <h1>
             <span class="brand-makin">MAKIN</span><span class="brand-cake">CAKE</span><span class="brand-co">Co.</span>
         </h1>
-        <p class="tagline">Pastry School Trained & Fueled by GOD</p>
+        <h4>Pastry School Trained & Fueled by GOD</h4>
     </div>
 
     <section id="about">
