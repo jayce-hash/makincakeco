@@ -37,9 +37,6 @@
             font-family: 'Poppins', sans-serif;
             line-height: 1.7;
             overflow-x: hidden;
-            /* Faint pink sprinkle pattern for light sections */
-            background-image: radial-gradient(rgba(208, 137, 212, 0.12) 2px, transparent 2px);
-            background-size: 25px 25px;
         }
 
         h1, h2, h3, h4 {
@@ -62,15 +59,13 @@
         }
 
         /* =========================================
-           NAVIGATION (Glassmorphism & Mobile Menu)
+           NAVIGATION
            ========================================= */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px); 
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.98);
             padding: 1rem 2rem;
             box-shadow: 0 4px 30px rgba(0,0,0,0.03);
             z-index: 1000;
@@ -92,9 +87,6 @@
             font-size: 1.5rem;
             color: var(--secondary-color);
             text-decoration: none;
-            background: white; /* Ensures readability over background pattern */
-            padding: 2px 8px;
-            border-radius: 4px;
         }
 
         .header-socials {
@@ -102,9 +94,6 @@
             gap: 12px;
             border-left: 1px solid #ddd;
             padding-left: 1.5rem;
-            background: white;
-            padding: 2px 8px 2px 1.5rem;
-            border-radius: 4px;
         }
 
         .header-socials a {
@@ -118,9 +107,6 @@
             display: flex;
             gap: 2rem;
             align-items: center;
-            background: white;
-            padding: 4px 12px;
-            border-radius: 4px;
         }
 
         .nav-links a {
@@ -151,8 +137,7 @@
             display: none;
             cursor: pointer;
             border: none;
-            background: white;
-            border-radius: 4px;
+            background: none;
             z-index: 1001;
             padding: 0.5rem;
         }
@@ -166,11 +151,12 @@
         }
 
         /* =========================================
-           HERO SECTION (Dynamic Bakery Upgrade)
+           HERO SECTION
            ========================================= */
         .hero {
-            /* Showcase Glow */
-            background: radial-gradient(circle at center, #4a3f3d 0%, var(--secondary-color) 100%);
+            background-color: var(--secondary-color);
+            /* Faint diagonal bakery box stripes */
+            background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 255, 255, 0.02) 10px, rgba(255, 255, 255, 0.02) 20px);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -179,26 +165,6 @@
             text-align: center;
             padding: 6rem 1.5rem 5rem; 
             position: relative;
-            overflow: hidden; /* Keeps the floating dust contained */
-        }
-
-        /* Floating Sugar Dust Animation */
-        .sugar-dust {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: 
-                radial-gradient(rgba(208, 137, 212, 0.15) 2px, transparent 2px), 
-                radial-gradient(rgba(255, 255, 255, 0.08) 2px, transparent 2px);
-            background-size: 60px 60px, 45px 45px;
-            background-position: 0 0, 20px 20px;
-            animation: float-dust 40s linear infinite;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        @keyframes float-dust {
-            0% { background-position: 0 0, 20px 20px; }
-            100% { background-position: 600px 600px, 450px 450px; }
         }
 
         .hero-image-wrapper {
@@ -238,30 +204,6 @@
             text-transform: uppercase;
             position: relative;
             z-index: 2;
-        }
-
-        /* Icing Wave Divider */
-        .icing-divider {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            overflow: hidden;
-            line-height: 0;
-            transform: translateY(1px); 
-            z-index: 5;
-            pointer-events: none;
-        }
-
-        .icing-divider svg {
-            position: relative;
-            display: block;
-            width: calc(100% + 1.3px);
-            height: 70px;
-        }
-
-        .icing-divider .shape-fill {
-            fill: var(--bg-color); /* Matches the body background */
         }
 
         /* =========================================
@@ -334,8 +276,7 @@
             padding: 6rem 0; 
             max-width: 100%;
             overflow: hidden;
-            /* Explicitly set transparent so body pattern shows through */
-            background-color: transparent; 
+            background-color: var(--bg-color); 
         }
 
         .marquee-container {
@@ -494,7 +435,7 @@
            SMART MOBILE STYLES
            ========================================= */
         @media(max-width: 768px) {
-            nav { padding: 1rem 1.5rem; background: rgba(255, 255, 255, 0.95); }
+            nav { padding: 1rem 1.5rem; background: rgba(255, 255, 255, 0.98); }
             .header-socials { display: none; }
             
             .hamburger { display: block; }
@@ -528,9 +469,6 @@
                 margin-bottom: -15%; 
                 max-width: 85%; 
             }
-            
-            /* Icing Wave scale for mobile */
-            .icing-divider svg { height: 40px; }
 
             /* General Mobile Spacing */
             section { padding: 5rem 1.2rem; }
@@ -583,8 +521,6 @@
     </nav>
 
     <div id="home" class="hero">
-        <div class="sugar-dust"></div>
-
         <div class="hero-image-wrapper reveal">
             <img src="MakinCakeCo.png" alt="MAKINCAKECo. Cakes" class="hero-cakes">
         </div>
@@ -593,12 +529,6 @@
             <span class="brand-makin">MAKIN</span><span class="brand-cake">CAKE</span><span class="brand-co">Co.</span>
         </h1>
         <p class="tagline reveal" style="transition-delay: 0.4s;">Pastry School Trained & Fueled by GOD</p>
-
-        <div class="icing-divider">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V0C73.81,25.92,154.67,50.19,223.77,61.11,256.77,66.27,290.1,62.24,321.39,56.44Z" class="shape-fill"></path>
-            </svg>
-        </div>
     </div>
 
     <section id="about">
