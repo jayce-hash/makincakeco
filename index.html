@@ -171,9 +171,11 @@
         .hero-image-wrapper {
             width: 100%;
             max-width: 550px;
-            /* Smart CSS Trick: Crops the transparent box out natively */
             clip-path: inset(18% 0 15% 0);
-            margin-bottom: -8%; /* Only a small adjustment needed now */
+            /* Pulls the entire group UP into the true vertical center */
+            margin-top: -18%; 
+            /* Pulls the text UP tighter against the bottom of the cakes */
+            margin-bottom: -18%; 
         }
 
         .hero-cakes {
