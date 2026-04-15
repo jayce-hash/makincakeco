@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MAKINCAKECo. offers custom cakes and cupcakes in North Richland Hills, TX. Pastry school trained, offering gluten-free, dairy-free, sugar-free, and eggless options.">
+    <meta name="description" content="MAKINCAKECo. offers custom cakes and cupcakes in North Richland Hills, TX. Pastry school trained.">
     <title>Custom Cakes & Cupcakes in DFW | MAKINCAKECo.</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,6 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@700;800;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
+        /* =========================================
+           VARIABLES & RESET
+           ========================================= */
         :root {
             --primary-color: #d089d4; 
             --primary-dark: #b86ebc;
@@ -18,6 +21,7 @@
             --script-color: #b88661; 
             --text-color: #4a4a4a;
             --bg-color: #fdfbfb;
+            --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -32,6 +36,7 @@
             color: var(--text-color);
             font-family: 'Poppins', sans-serif;
             line-height: 1.7;
+            overflow-x: hidden;
         }
 
         h1, h2, h3, h4 {
@@ -41,6 +46,7 @@
             color: var(--secondary-color);
         }
 
+        /* Typography Utilities */
         .brand-makin { font-weight: 800; }
         .brand-cake { font-weight: 800; color: var(--primary-color); }
         .brand-co { 
@@ -52,29 +58,35 @@
             margin-left: -2px; 
         }
 
-        /* Navigation */
+        /* =========================================
+           NAVIGATION (Glassmorphism & Mobile Menu)
+           ========================================= */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px); /* Modern blur effect */
+            -webkit-backdrop-filter: blur(12px);
             padding: 1rem 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.03);
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: var(--transition);
         }
 
         .nav-left {
             display: flex;
             align-items: center;
             gap: 1.5rem;
+            z-index: 1001;
         }
 
         .nav-brand {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             color: var(--secondary-color);
             text-decoration: none;
         }
@@ -82,20 +94,21 @@
         .header-socials {
             display: flex;
             gap: 12px;
-            border-left: 1px solid #eaeaea;
+            border-left: 1px solid #ddd;
             padding-left: 1.5rem;
         }
 
         .header-socials a {
             color: var(--primary-color);
+            transition: transform 0.3s ease;
             display: flex;
-            align-items: center;
-            transition: transform 0.3s ease, color 0.3s ease;
         }
+        .header-socials a:hover { transform: scale(1.15); color: var(--primary-dark); }
 
-        .header-socials a:hover {
-            color: var(--primary-dark);
-            transform: scale(1.1);
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
         }
 
         .nav-links a {
@@ -103,16 +116,46 @@
             color: var(--secondary-color);
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            margin-left: 20px;
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: color 0.3s;
+            position: relative;
         }
 
-        .nav-links a:hover { color: var(--primary-color); }
+        /* Underline Hover Effect */
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover::after { width: 100%; }
 
-        /* Hero Section */
+        /* Hamburger Button (Hidden on Desktop) */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            border: none;
+            background: none;
+            z-index: 1001;
+            padding: 0.5rem;
+        }
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 5px 0;
+            transition: 0.3s ease;
+        }
+
+        /* =========================================
+           HERO SECTION (Smart Structural Centering)
+           ========================================= */
         .hero {
             background-color: var(--secondary-color);
             min-height: 100vh;
@@ -121,60 +164,70 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 5rem 1rem 2rem; 
+            padding: 6rem 1.5rem 2rem;
+            position: relative;
+        }
+
+        .hero-image-wrapper {
+            width: 100%;
+            max-width: 550px;
+            /* Smart CSS Trick: Crops the transparent box out natively */
+            clip-path: inset(18% 0 15% 0);
+            margin-bottom: -8%; /* Only a small adjustment needed now */
         }
 
         .hero-cakes {
             width: 100%;
-            max-width: 550px; 
             height: auto;
-            margin-top: -8%; 
-            margin-bottom: -16%; 
-            filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.15));
-            position: relative;
-            z-index: 1;
-            pointer-events: none; 
+            filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.2));
         }
 
         .hero h1 {
             color: white;
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            margin-bottom: 0.5rem;
-            margin-top: 0;
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            margin: 0 0 0.5rem 0;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            position: relative;
             z-index: 2;
         }
-
+        
         .hero .brand-makin { color: white; }
         .hero .brand-cake { color: var(--primary-color); }
         .hero .brand-co { color: var(--script-color); }
 
         .tagline {
-            font-size: 1.2rem;
-            font-weight: 300;
-            letter-spacing: 3px;
-            text-transform: uppercase;
             color: var(--primary-color);
-            margin-top: 0; 
-            position: relative;
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
             z-index: 2;
         }
 
-        /* Shared Section Styles */
+        /* =========================================
+           MAIN LAYOUT & REVEAL ANIMATIONS
+           ========================================= */
         section {
-            padding: 6rem 1.5rem;
-            max-width: 1100px;
+            padding: 8rem 1.5rem;
+            max-width: 1200px;
             margin: 0 auto;
+        }
+
+        /* The Animation Class */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .section-title {
             text-align: center;
-            font-size: 2.2rem;
+            font-size: clamp(2rem, 4vw, 2.8rem);
             margin-bottom: 4rem;
-            position: relative;
         }
-
         .section-title::after {
             content: '';
             display: block;
@@ -182,48 +235,38 @@
             height: 3px;
             background: var(--primary-color);
             margin: 20px auto 0;
-            border-radius: 2px;
         }
 
         /* About Grid */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 4rem;
+            gap: 3rem;
             background: white;
-            padding: 4rem 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            padding: 4rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
         }
 
-        @media(min-width: 768px) {
-            .about-grid { grid-template-columns: 1fr 1fr; }
+        @media(min-width: 800px) {
+            .about-grid { grid-template-columns: 1fr 1fr; gap: 5rem; }
         }
 
-        .about-grid h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .dietary-list {
-            list-style: none;
-            margin-top: 1.5rem;
-        }
-
+        .about-grid h3 { font-size: 1.5rem; margin-bottom: 1.5rem; }
+        
+        .dietary-list { list-style: none; display: grid; gap: 0.8rem; }
         .dietary-list li {
             background: var(--bg-color);
-            margin-bottom: 0.8rem;
             padding: 1rem 1.5rem;
-            border-radius: 8px;
-            border-left: 5px solid var(--primary-color);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 700;
-            text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        /* Gallery */
+        /* Gallery Grid */
         .gallery {
             display: grid;
             grid-template-columns: 1fr; 
@@ -235,64 +278,73 @@
         }
 
         .gallery-item {
-            background-color: #f5f5f5;
-            height: 350px;
-            border-radius: 15px;
+            background-color: #f0f0f0;
+            aspect-ratio: 4/5; /* Smarter way to handle image boxes */
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #888;
+            color: #999;
             font-weight: 600;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+            transition: var(--transition);
             overflow: hidden;
             background-size: cover;
             background-position: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
         .gallery-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
         /* Testimonials */
         .testimonials {
             background-color: var(--secondary-color);
-            padding: 6rem 1.5rem;
+            color: white;
+            padding: 8rem 1.5rem;
+            text-align: center;
         }
-
         .testimonials .section-title { color: white; }
 
         .test-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2.5rem;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
+            text-align: left;
         }
 
         .review {
             background: white;
-            padding: 3rem 2.5rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            position: relative;
+            color: var(--text-color);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-
-        .review p { margin-bottom: 1.5rem; font-style: italic; font-weight: 300;}
+        .review p { font-style: italic; font-weight: 300; margin-bottom: 2rem; }
         .review h4 { text-align: right; color: var(--primary-color); font-size: 1rem; }
 
         /* Contact CTA */
         .contact-cta {
             text-align: center;
             background: white;
-            padding: 5rem 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
-            border: 1px solid rgba(208, 137, 212, 0.2);
+            padding: 6rem 2rem;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.04);
+            border: 1px solid rgba(208, 137, 212, 0.15);
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
         }
 
         .btn {
-            display: inline-block;
             background-color: var(--primary-color);
             color: white;
             text-decoration: none;
@@ -301,121 +353,79 @@
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
             font-size: 0.9rem;
-            text-transform: uppercase;
             letter-spacing: 1px;
-            margin: 1rem 0.5rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(208, 137, 212, 0.3);
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(208, 137, 212, 0.25);
         }
+        .btn:hover { background-color: var(--primary-dark); transform: translateY(-4px); box-shadow: 0 15px 30px rgba(208, 137, 212, 0.4); }
+        .btn.outline { background-color: transparent; color: var(--secondary-color); border: 2px solid var(--secondary-color); box-shadow: none; }
+        .btn.outline:hover { background-color: var(--secondary-color); color: white; }
 
-        .btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(208, 137, 212, 0.4);
-        }
-
-        .btn.outline {
-            background-color: transparent;
-            color: var(--secondary-color);
-            border: 2px solid var(--secondary-color);
-            box-shadow: none;
-        }
-
-        .btn.outline:hover {
-            background-color: var(--secondary-color);
-            color: white;
-        }
-
-        /* Footer & Agency Signature */
+        /* Footer */
         footer {
             background-color: var(--secondary-color);
             color: white;
             text-align: center;
-            padding: 4rem 2rem 2rem;
+            padding: 5rem 2rem 2rem;
         }
 
-        .footer-socials { margin-top: 1.5rem; }
-        .footer-socials a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 0 15px;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
+        .footer-socials { margin-top: 2rem; display: flex; justify-content: center; gap: 2rem; }
+        .footer-socials a { color: var(--primary-color); font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.9rem; transition: color 0.3s; }
         .footer-socials a:hover { color: white; }
 
         .agency-signature {
-            margin-top: 4rem;
+            margin-top: 5rem;
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            font-family: 'Poppins', sans-serif;
             font-size: 0.75rem;
             letter-spacing: 1px;
-            text-transform: uppercase;
             color: rgba(255, 255, 255, 0.4);
         }
-
-        .agency-link {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            font-weight: 600;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .agency-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -2px;
-            left: 0;
-            background-color: var(--primary-color);
-            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .agency-link:hover { color: #ffffff; }
-        .agency-link:hover::after { width: 100%; }
+        .agency-link { color: rgba(255, 255, 255, 0.7); text-decoration: none; font-weight: 600; transition: 0.3s; }
+        .agency-link:hover { color: white; }
 
         /* =========================================
-           MOBILE OPTIMIZATION (Bulletproofed)
+           SMART MOBILE STYLES
            ========================================= */
         @media(max-width: 768px) {
-            /* Navigation */
-            nav { flex-direction: column; padding: 1rem; }
-            .nav-left { flex-direction: column; gap: 0.8rem; margin-bottom: 1rem; }
-            .header-socials { border-left: none; padding-left: 0; border-top: 1px solid #eaeaea; padding-top: 0.8rem; }
+            nav { padding: 1rem 1.5rem; }
+            .header-socials { display: none; /* Hide top socials on mobile to save space */ }
             
-            /* Wrap nav links so they fit neatly on narrow screens */
+            .hamburger { display: block; }
+            
+            /* Mobile Nav Drawer */
             .nav-links {
-                display: flex;
-                flex-wrap: wrap;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 80%;
+                max-width: 300px;
+                background: white;
+                flex-direction: column;
                 justify-content: center;
-                gap: 12px;
+                gap: 2.5rem;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+                transition: var(--transition);
             }
-            .nav-links a { margin: 0; font-size: 0.8rem; }
+            .nav-links.nav-active { right: 0; }
+            .nav-links a { font-size: 1.2rem; }
 
-            /* Hero adjustments */
-            /* Add extra top padding so the stacked mobile nav doesn't hide the logo */
-            .hero { padding: 9rem 1rem 3rem; }
-            /* Relax negative margins on mobile to prevent text overlapping */
-            .hero-cakes { margin-top: -2%; margin-bottom: -5%; max-width: 90%; }
-            .tagline { font-size: 0.95rem; letter-spacing: 2px; }
+            /* Hamburger Animation */
+            .hamburger.toggle span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .hamburger.toggle span:nth-child(2) { opacity: 0; }
+            .hamburger.toggle span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-            /* Shrink overly large section padding for mobile */
-            section { padding: 4rem 1.2rem; }
-            .testimonials { padding: 4rem 1.2rem; }
-            .about-grid { padding: 2.5rem 1.5rem; gap: 2rem; }
-            .contact-cta { padding: 3rem 1.5rem; }
-            .section-title { font-size: 1.8rem; margin-bottom: 2.5rem; }
+            /* Hero Mobile Fixes */
+            .hero-image-wrapper { clip-path: inset(10% 0 10% 0); margin-bottom: 0; max-width: 85%; }
+            
+            /* General Mobile Spacing */
+            section { padding: 5rem 1.2rem; }
+            .about-grid { padding: 2.5rem 1.5rem; }
+            .review { padding: 2rem 1.5rem; }
+            .contact-cta { padding: 4rem 1.5rem; }
+            .btn-group { flex-direction: column; }
+            .btn { width: 100%; text-align: center; }
         }
     </style>
 </head>
@@ -426,13 +436,12 @@
             <a href="#home" class="nav-brand">
                 <span class="brand-makin">MAKIN</span><span class="brand-cake">CAKE</span><span class="brand-co">Co.</span>
             </a>
-            
             <div class="header-socials">
                 <a href="https://instagram.com/MAKINCAKECo" target="_blank" aria-label="Instagram">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                 </a>
                 <a href="https://facebook.com/MAKINCAKECo" target="_blank" aria-label="Facebook">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                 </a>
             </div>
         </div>
@@ -444,20 +453,28 @@
             <a href="#reviews">Reviews</a>
             <a href="#contact">Contact</a>
         </div>
+
+        <button class="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
 
     <div id="home" class="hero">
-        <img src="MakinCakeCo.png" alt="MAKINCAKECo. Cakes" class="hero-cakes">
+        <div class="hero-image-wrapper reveal">
+            <img src="MakinCakeCo.png" alt="MAKINCAKECo. Cakes" class="hero-cakes">
+        </div>
         
-        <h1>
+        <h1 class="reveal" style="transition-delay: 0.2s;">
             <span class="brand-makin">MAKIN</span><span class="brand-cake">CAKE</span><span class="brand-co">Co.</span>
         </h1>
-        <p class="tagline">Pastry School Trained & Fueled by GOD</p>
+        <p class="tagline reveal" style="transition-delay: 0.4s;">Pastry School Trained & Fueled by GOD</p>
     </div>
 
     <section id="about">
-        <h2 class="section-title">Meet Your Baker</h2>
-        <div class="about-grid">
+        <h2 class="section-title reveal">Meet Your Baker</h2>
+        <div class="about-grid reveal">
             <div>
                 <h3>Hi, I'm Sarah Carroll!</h3>
                 <p>Welcome to <span class="brand-makin">MAKIN</span><span class="brand-cake">CAKE</span><span class="brand-co">Co.</span>! I am the owner, baker, and cake decorator based right here in North Richland Hills, serving the Dallas / Fort Worth area. I create custom cakes and cupcakes for any and all occasions.</p>
@@ -479,20 +496,20 @@
     </section>
 
     <section id="gallery">
-        <h2 class="section-title">Recent Creations</h2>
-        <div class="gallery">
-            <div class="gallery-item" style="background-image: url('YOUR-IMAGE-LINK-HERE.jpg');">Champagne Cake</div>
-            <div class="gallery-item" style="background-image: url('YOUR-IMAGE-LINK-HERE.jpg');">Crown Cake</div>
-            <div class="gallery-item" style="background-image: url('YOUR-IMAGE-LINK-HERE.jpg');">Construction Cake</div>
-            <div class="gallery-item" style="background-image: url('YOUR-IMAGE-LINK-HERE.jpg');">Heart Piping Cake</div>
-            <div class="gallery-item" style="background-image: url('YOUR-IMAGE-LINK-HERE.jpg');">Drip Cake</div>
-            <div class="gallery-item" style="background-image: url('YOUR-IMAGE-LINK-HERE.jpg');">Custom Cupcakes</div>
+        <h2 class="section-title reveal">Recent Creations</h2>
+        <div class="gallery reveal">
+            <div class="gallery-item" style="background-image: url('');">Champagne Cake</div>
+            <div class="gallery-item" style="background-image: url('');">Crown Cake</div>
+            <div class="gallery-item" style="background-image: url('');">Construction Cake</div>
+            <div class="gallery-item" style="background-image: url('');">Heart Piping Cake</div>
+            <div class="gallery-item" style="background-image: url('');">Drip Cake</div>
+            <div class="gallery-item" style="background-image: url('');">Custom Cupcakes</div>
         </div>
     </section>
 
     <div id="reviews" class="testimonials">
-        <h2 class="section-title">Sweet Words</h2>
-        <div class="test-grid">
+        <h2 class="section-title reveal">Sweet Words</h2>
+        <div class="test-grid reveal">
             <div class="review">
                 <p>"Sarah made a FANTASTIC cake for our 3 year old's birthday!! I inquired about a chocolate cake with a plain white frosting... Not only did she give us an incredible base & the decorated version turned out incredible, the cake was DELICIOUS! It was a huge hit!!"</p>
                 <h4>- Shelby G.</h4>
@@ -509,31 +526,73 @@
     </div>
 
     <section id="contact">
-        <div class="contact-cta">
+        <div class="contact-cta reveal">
             <h2 class="section-title" style="margin-bottom: 2rem;">Ready to Place an Order?</h2>
-            <p style="font-size: 1.1rem; margin-bottom: 3rem; color: #666;">My calendar fills up fast, so don't wait to secure your spot! Reach out today to discuss your custom cake or cupcake needs.</p>
+            <p style="font-size: 1.1rem; color: #666; max-width: 600px; margin: 0 auto;">My calendar fills up fast, so don't wait to secure your spot! Reach out today to discuss your custom cake or cupcake needs.</p>
             
-            <a href="tel:8174568554" class="btn">Call (817) 456-8554</a>
-            <a href="mailto:Sarahcarroll1012@gmail.com" class="btn outline">Email Me</a>
+            <div class="btn-group">
+                <a href="tel:8174568554" class="btn">Call (817) 456-8554</a>
+                <a href="mailto:Sarahcarroll1012@gmail.com" class="btn outline">Email Me</a>
+            </div>
         </div>
     </section>
 
     <footer>
-        <p style="font-family: 'Montserrat', sans-serif; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">
-            &copy; 2024 <span class="brand-makin" style="color:white;">MAKIN</span><span class="brand-cake">CAKE</span><span class="brand-co">Co.</span> | North Richland Hills, TX
+        <p style="font-family: 'Montserrat', sans-serif; font-size: 0.85rem; letter-spacing: 1px;">
+            &copy; 2024 <span class="brand-makin">MAKIN</span><span class="brand-cake">CAKE</span><span class="brand-co">Co.</span> | North Richland Hills, TX
         </p>
         <div class="footer-socials">
-            <a href="https://instagram.com/MAKINCAKECo" target="_blank">Instagram</a>
-            <a href="https://facebook.com/MAKINCAKECo" target="_blank">Facebook</a>
+            <a href="https://instagram.com/MAKINCAKECo" target="_blank">INSTAGRAM</a>
+            <a href="https://facebook.com/MAKINCAKECo" target="_blank">FACEBOOK</a>
         </div>
         
         <div class="agency-signature">
-            <span class="signature-text">Digital Experience by</span>
+            DIGITAL EXPERIENCE BY 
             <a href="https://jwdigital.ink" target="_blank" rel="noopener" class="agency-link">
-                JW Digital
+                JW DIGITAL
             </a>
         </div>
     </footer>
 
+    <script>
+        // Hamburger Menu Logic
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const links = document.querySelectorAll('.nav-links a');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+            hamburger.classList.toggle('toggle');
+        });
+
+        // Close mobile menu when a link is clicked
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('nav-active');
+                hamburger.classList.remove('toggle');
+            });
+        });
+
+        // Scroll Reveal Animation Logic
+        const observerOptions = { root: null, threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        
+        // Trigger initial check so hero animates immediately
+        setTimeout(() => {
+            document.querySelectorAll('.reveal').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if(rect.top < window.innerHeight) el.classList.add('active');
+            });
+        }, 100);
+    </script>
 </body>
 </html>
