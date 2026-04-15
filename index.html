@@ -66,7 +66,7 @@
             top: 0;
             width: 100%;
             background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px); /* Modern blur effect */
+            backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             padding: 1rem 2rem;
             box-shadow: 0 4px 30px rgba(0,0,0,0.03);
@@ -122,7 +122,6 @@
             position: relative;
         }
 
-        /* Underline Hover Effect */
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -135,7 +134,7 @@
         }
         .nav-links a:hover::after { width: 100%; }
 
-        /* Hamburger Button (Hidden on Desktop) */
+        /* Hamburger Button */
         .hamburger {
             display: none;
             cursor: pointer;
@@ -154,7 +153,7 @@
         }
 
         /* =========================================
-           HERO SECTION (Smart Structural Centering)
+           HERO SECTION
            ========================================= */
         .hero {
             background-color: var(--secondary-color);
@@ -172,9 +171,7 @@
             width: 100%;
             max-width: 550px;
             clip-path: inset(18% 0 15% 0);
-            /* Pulls the entire group UP into the true vertical center */
             margin-top: -18%; 
-            /* Pulls the text UP tighter against the bottom of the cakes */
             margin-bottom: -12%; 
         }
 
@@ -214,7 +211,6 @@
             margin: 0 auto;
         }
 
-        /* The Animation Class */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -268,36 +264,76 @@
             letter-spacing: 1px;
         }
 
-        /* Gallery Grid */
-        .gallery {
-            display: grid;
-            grid-template-columns: 1fr; 
-            gap: 2rem;
+        /* =========================================
+           INFINITE MARQUEE GALLERY
+           ========================================= */
+        .gallery-section {
+            padding: 6rem 0; 
+            max-width: 100%;
+            overflow: hidden;
+            background-color: var(--bg-color);
         }
 
-        @media(min-width: 768px) {
-            .gallery { grid-template-columns: repeat(3, 1fr); }
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .marquee-container::before,
+        .marquee-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 15%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .marquee-container::before {
+            left: 0;
+            background: linear-gradient(to right, var(--bg-color) 0%, transparent 100%);
+        }
+        .marquee-container::after {
+            right: 0;
+            background: linear-gradient(to left, var(--bg-color) 0%, transparent 100%);
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: scroll-marquee 80s linear infinite; 
+        }
+
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll-marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } 
         }
 
         .gallery-item {
-            background-color: #f0f0f0;
-            aspect-ratio: 4/5; /* Smarter way to handle image boxes */
+            width: 250px;
+            height: 300px;
+            margin: 0 1rem;
             border-radius: 16px;
+            background-color: #f0f0f0;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #999;
-            font-weight: 600;
-            transition: var(--transition);
-            overflow: hidden;
             background-size: cover;
             background-position: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: var(--transition);
+            flex-shrink: 0; 
         }
 
         .gallery-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            z-index: 3;
         }
 
         /* Testimonials */
@@ -391,7 +427,7 @@
            ========================================= */
         @media(max-width: 768px) {
             nav { padding: 1rem 1.5rem; }
-            .header-socials { display: none; /* Hide top socials on mobile to save space */ }
+            .header-socials { display: none; }
             
             .hamburger { display: block; }
             
@@ -413,26 +449,33 @@
             .nav-links.nav-active { right: 0; }
             .nav-links a { font-size: 1.2rem; }
 
-            /* Hamburger Animation */
             .hamburger.toggle span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
             .hamburger.toggle span:nth-child(2) { opacity: 0; }
             .hamburger.toggle span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
             /* Hero Mobile Fixes */
             .hero-image-wrapper { 
-                clip-path: inset(18% 0 15% 0); /* Keeps the exact same crop as desktop */
+                clip-path: inset(18% 0 15% 0); 
                 margin-top: -18%; 
-                margin-bottom: -15%; /* Pulls the text up tight on narrow screens */
+                margin-bottom: -15%; 
                 max-width: 85%; 
             }
             
             /* General Mobile Spacing */
             section { padding: 5rem 1.2rem; }
+            .gallery-section { padding: 4rem 0; }
             .about-grid { padding: 2.5rem 1.5rem; }
             .review { padding: 2rem 1.5rem; }
             .contact-cta { padding: 4rem 1.5rem; }
             .btn-group { flex-direction: column; }
             .btn { width: 100%; text-align: center; }
+
+            /* Marquee Mobile Tweaks */
+            .gallery-item {
+                width: 200px;
+                height: 240px;
+                margin: 0 0.5rem;
+            }
         }
     </style>
 </head>
@@ -502,30 +545,57 @@
         </div>
     </section>
 
-<section id="gallery">
+    <section id="gallery" class="gallery-section">
         <h2 class="section-title reveal">Recent Creations</h2>
-        <div class="gallery-track reveal">
-            <div class="gallery-item" style="background-image: url('Cake1.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('Cake2.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('Cake3.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('Cake4.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('Cake5.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('Cake6.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('Cake7.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('Cake8.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('Cake9.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('Cake10.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('Cake11.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('Cake12.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('Cake13.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('Cake14.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('Cake15.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('Cake16.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('Cake17.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('Cake18.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('Cake19.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('Cake20.jpg');"></div>
-            <div class="gallery-item" style="background-image: url('Cake21.jpg');"></div>
+        
+        <div class="marquee-container reveal">
+            <div class="marquee-track">
+                
+                <div class="gallery-item" style="background-image: url('Cake1.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake2.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake3.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake4.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake5.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake6.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake7.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake8.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake9.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake10.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake11.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake12.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake13.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake14.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake15.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake16.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake17.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake18.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake19.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake20.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake21.jpg');"></div>
+
+                <div class="gallery-item" style="background-image: url('Cake1.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake2.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake3.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake4.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake5.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake6.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake7.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake8.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake9.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake10.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake11.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake12.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake13.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake14.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake15.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake16.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake17.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake18.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake19.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake20.jpg');"></div>
+                <div class="gallery-item" style="background-image: url('Cake21.jpg');"></div>
+
+            </div>
         </div>
     </section>
 
@@ -601,7 +671,7 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    observer.unobserve(entry.target); // Only animate once
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
