@@ -154,10 +154,7 @@
             transition: 0.3s ease;
         }
 
-        /* =========================================
-           HERO SECTION (Straight edge, bakery stripes)
-           ========================================= */
-        /* 1. Added more top padding to push the visual center down, away from the nav bar */
+        /* 1. Added top padding to push the visual center down from the nav bar */
         .hero {
             background-color: var(--secondary-color);
             background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 255, 255, 0.02) 10px, rgba(255, 255, 255, 0.02) 20px);
@@ -167,32 +164,33 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 10rem 1.5rem 4rem; /* 10rem top padding accounts for the nav bar */
+            padding: 8rem 1.5rem 4rem; 
             position: relative;
         }
 
-        /* 2. Scaled the cakes down and stopped pulling them upward */
+        /* 2. Scaled UP to 600px, fixed margins to prevent overlap */
         .hero-image-wrapper {
             width: 100%;
-            max-width: 380px; 
+            max-width: 600px; /* Bumped up from the original 550px to fill the space */
             clip-path: inset(18% 0 15% 0);
-            margin-top: -5%; /* Relaxed this so the group drops down */
-            margin-bottom: -18%; /* Keeps the text sucked up tight against the cakes */
+            margin-top: -12%; /* Pulls the dead space out of the top */
+            margin-bottom: -12%; /* Sits the text perfectly underneath without crashing */
             position: relative;
             z-index: 2;
         }
 
+        
         .hero-cakes {
             width: 100%;
             height: auto;
             filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.2));
         }
 
-        /* 3. Scaled the headline to match the new cake proportions */
+        /* 3. Scaled the text up to match the larger cakes */
         .hero h1 {
             color: white;
-            font-size: clamp(2.2rem, 6vw, 4.2rem); 
-            margin: 0;
+            font-size: clamp(2.8rem, 8vw, 5.5rem); /* Bolder, larger text */
+            margin: 0 0 0.5rem 0;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             position: relative;
             z-index: 2;
@@ -202,17 +200,17 @@
         .hero .brand-cake { color: var(--primary-color); }
         .hero .brand-co { color: var(--script-color); }
 
-        /* 4. Swapped tagline to white for contrast and added breathing room */
+        /* 4. White tagline, scaled up slightly */
         .tagline {
             color: white; 
-            font-size: clamp(0.85rem, 2vw, 1.1rem);
+            font-size: clamp(0.95rem, 2.5vw, 1.25rem);
             font-weight: 300;
             letter-spacing: 4px;
             text-transform: uppercase;
             position: relative;
             z-index: 2;
-            margin-top: 0.5rem; 
         }
+
 
         /* =========================================
            MAIN LAYOUT & REVEAL ANIMATIONS
