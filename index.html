@@ -160,7 +160,9 @@
             transition: 0.3s ease;
         }
 
-        /* 1. Added top padding to push the visual center down from the nav bar */
+        /* =========================================
+           HERO SECTION
+           ========================================= */
         .hero {
             background-color: var(--secondary-color);
             background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 255, 255, 0.02) 10px, rgba(255, 255, 255, 0.02) 20px);
@@ -174,28 +176,25 @@
             position: relative;
         }
 
-        /* 2. Scaled UP to 600px, fixed margins to prevent overlap */
         .hero-image-wrapper {
             width: 100%;
-            max-width: 600px; /* Bumped up from the original 550px to fill the space */
+            max-width: 600px; 
             clip-path: inset(18% 0 15% 0);
-            margin-top: -12%; /* Pulls the dead space out of the top */
-            margin-bottom: -12%; /* Sits the text perfectly underneath without crashing */
+            margin-top: -12%; 
+            margin-bottom: -12%; 
             position: relative;
             z-index: 2;
         }
 
-        
         .hero-cakes {
             width: 100%;
             height: auto;
             filter: drop-shadow(0px 10px 20px rgba(0,0,0,0.2));
         }
 
-        /* 3. Scaled the text up to match the larger cakes */
         .hero h1 {
             color: white;
-            font-size: clamp(2.8rem, 8vw, 5.5rem); /* Bolder, larger text */
+            font-size: clamp(2.8rem, 8vw, 5.5rem); 
             margin: 0 0 0.5rem 0;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             position: relative;
@@ -206,7 +205,6 @@
         .hero .brand-cake { color: var(--primary-color); }
         .hero .brand-co { color: var(--script-color); }
 
-        /* 4. White tagline, scaled up slightly */
         .tagline {
             color: white; 
             font-size: clamp(0.95rem, 2.5vw, 1.25rem);
@@ -216,7 +214,6 @@
             position: relative;
             z-index: 2;
         }
-
 
         /* =========================================
            MAIN LAYOUT & REVEAL ANIMATIONS
@@ -253,7 +250,7 @@
 
         /* About Grid */
         .about-grid {
-            border: 1px solid var(--primary-color); /* Pink Outline */
+            border: 1px solid var(--primary-color); 
             display: grid;
             grid-template-columns: 1fr;
             gap: 3rem;
@@ -280,6 +277,112 @@
             font-size: 0.85rem;
             font-weight: 700;
             letter-spacing: 1px;
+        }
+
+        /* =========================================
+           ACCORDION SYSTEM (Menu & Policies)
+           ========================================= */
+        .accordion-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .accordion-item {
+            background: white;
+            border: 1px solid var(--primary-color);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .accordion-item:hover {
+            box-shadow: 0 10px 25px rgba(208, 137, 212, 0.15);
+        }
+
+        .accordion-item summary {
+            padding: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-item summary::-webkit-details-marker { display: none; }
+        .accordion-item summary::after {
+            content: '+';
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
+            line-height: 1;
+        }
+
+        .accordion-item[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            padding: 0 1.5rem 1.5rem;
+            border-top: 1px solid rgba(208, 137, 212, 0.2);
+            margin-top: 0.5rem;
+            padding-top: 1.5rem;
+        }
+
+        .accordion-content p {
+            margin-bottom: 1rem;
+            font-weight: 300;
+            font-size: 0.95rem;
+        }
+
+        .accordion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .accordion-content h4 {
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
+        }
+
+        .bullet-list {
+            list-style: none;
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .bullet-list li {
+            font-size: 0.95rem;
+            font-weight: 400;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .bullet-list li::before {
+            content: '•';
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-right: 8px;
+            margin-top: 2px;
+        }
+
+        .highlight-note {
+            margin-top: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            font-size: 0.9rem;
+            background: var(--bg-color);
+            padding: 1rem;
+            border-radius: 10px;
+            display: inline-block;
         }
 
         /* =========================================
@@ -333,7 +436,7 @@
         }
 
         .gallery-item {
-            border: 1px solid var(--primary-color); /* Pink Outline */
+            border: 1px solid var(--primary-color);
             width: 250px;
             height: 300px;
             margin: 0 1rem;
@@ -357,7 +460,7 @@
 
         /* Testimonials */
         .testimonials {
-            border: 1px solid var(--primary-color); /* Pink Outline */
+            border: 1px solid var(--primary-color);
             background-color: var(--secondary-color);
             background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 255, 255, 0.02) 10px, rgba(255, 255, 255, 0.02) 20px);
             color: white;
@@ -392,7 +495,7 @@
             padding: 6rem 2rem;
             border-radius: 24px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.04);
-            border: 1px solid var(--primary-color); /* Pink Outline */
+            border: 1px solid var(--primary-color); 
         }
 
         .btn-group {
@@ -448,14 +551,12 @@
            SMART MOBILE STYLES (Ultra-Polished)
            ========================================= */
         @media(max-width: 768px) {
-            /* Tighter mobile typography */
             body { line-height: 1.6; }
             .tagline { letter-spacing: 2px; font-size: 0.85rem; }
             .section-title { font-size: 1.8rem; margin-bottom: 2.5rem; }
 
             nav { padding: 1rem 1.2rem; background: rgba(255, 255, 255, 0.98); }
             
-            /* Bring back social icons and scale them to fit with the hamburger menu */
             .nav-left { gap: 0.75rem; }
             .nav-brand { font-size: 1.25rem; padding: 2px 4px; }
             .header-socials { 
@@ -467,7 +568,6 @@
             
             .hamburger { display: block; padding: 0.25rem; }
             
-            /* Mobile Nav Drawer */
             .nav-links {
                 position: fixed;
                 top: 0;
@@ -489,7 +589,6 @@
             .hamburger.toggle span:nth-child(2) { opacity: 0; }
             .hamburger.toggle span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-            /* Hero Mobile Fixes */
             .hero-image-wrapper { 
                 clip-path: inset(18% 0 15% 0); 
                 margin-top: -18%; 
@@ -497,20 +596,16 @@
                 max-width: 85%; 
             }
 
-            /* General Mobile Spacing - Reduced Dead Space */
             section { padding: 3.5rem 1.2rem; }
             .gallery-section { padding: 3rem 0; }
             
-            /* Tighter internal box paddings & gaps */
             .about-grid { padding: 2rem 1.5rem; gap: 2rem; }
             .review { padding: 2rem 1.5rem; }
             .contact-cta { padding: 3rem 1.2rem; }
             
-            /* Buttons */
             .btn-group { flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
             .btn { width: 100%; text-align: center; margin: 0; padding: 1.1rem 2rem; }
 
-            /* Marquee Mobile Tweaks */
             .gallery-item {
                 width: 180px;
                 height: 220px;
@@ -539,8 +634,10 @@
         <div class="nav-links">
             <a href="#home">Home</a>
             <a href="#about">About</a>
+            <a href="#menu">Menu</a>
             <a href="#gallery">Gallery</a>
             <a href="#reviews">Reviews</a>
+            <a href="#policies">Policies</a>
             <a href="#contact">Contact</a>
         </div>
 
@@ -582,6 +679,98 @@
                     <li>Eggless</li>
                 </ul>
             </div>
+        </div>
+    </section>
+
+    <section id="menu">
+        <h2 class="section-title reveal">MAKINCAKECo. Menu</h2>
+        <div class="accordion-container reveal">
+            
+            <details class="accordion-item">
+                <summary>🍰 Cake Flavors</summary>
+                <div class="accordion-content">
+                    <div class="accordion-grid">
+                        <div>
+                            <h4>Traditional Flavors</h4>
+                            <ul class="bullet-list">
+                                <li>Vanilla</li>
+                                <li>Vanilla Almond</li>
+                                <li>Chocolate</li>
+                                <li>Red Velvet</li>
+                                <li>Lemon</li>
+                                <li>Carrot</li>
+                                <li>Marble</li>
+                                <li>Yellow Butter Cake</li>
+                                <li>Birthday Confetti</li>
+                                <li>Buttery Pecan</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4>Specialty Flavors</h4>
+                            <ul class="bullet-list">
+                                <li>Key Lime Pie</li>
+                                <li>Neapolitan</li>
+                                <li>Orange Sherbet</li>
+                                <li>White Chocolate Raspberry</li>
+                                <li>Cinnamon Swirl</li>
+                                <li>Lavender</li>
+                                <li>Blueberry Pie</li>
+                                <li>German Chocolate</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="highlight-note">✨ Create Your Own Flavor Available</div>
+                </div>
+            </details>
+
+            <details class="accordion-item">
+                <summary>🍓 Fillings</summary>
+                <div class="accordion-content">
+                    <ul class="bullet-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem 2rem;">
+                        <li>Bavarian Cream</li>
+                        <li>Strawberry</li>
+                        <li>Raspberry</li>
+                        <li>Lemon</li>
+                        <li>Pineapple</li>
+                        <li>Blueberry</li>
+                        <li>German Chocolate</li>
+                        <li>Caramel</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="accordion-item">
+                <summary>🧁 Buttercream Flavors</summary>
+                <div class="accordion-content">
+                    <ul class="bullet-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem 2rem;">
+                        <li>Vanilla</li>
+                        <li>Vanilla Almond</li>
+                        <li>Cream Cheese</li>
+                        <li>Chocolate</li>
+                        <li>Peanut Butter</li>
+                        <li>Lemon</li>
+                        <li>Strawberry</li>
+                        <li>Coconut</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details class="accordion-item">
+                <summary>📩 Custom Cake & Cupcake Inquiries</summary>
+                <div class="accordion-content">
+                    <p>Prices vary depending on size, design, and level of detail. When inquiring, please include:</p>
+                    <ul class="bullet-list" style="margin-bottom: 1.5rem;">
+                        <li>Event date</li>
+                        <li>Cake flavor</li>
+                        <li>Number of guests</li>
+                        <li>Inspiration photos</li>
+                    </ul>
+                    <p style="font-size: 0.85rem; opacity: 0.8; font-style: italic; margin-bottom: 0;">
+                        *Please note: Edible images and detailed custom elements are available for an additional charge.
+                    </p>
+                </div>
+            </details>
+
         </div>
     </section>
 
@@ -656,6 +845,112 @@
             </div>
         </div>
     </div>
+
+    <section id="policies">
+        <h2 class="section-title reveal">Terms & Conditions</h2>
+        <p class="accordion-intro reveal">These Terms & Conditions serve as an agreement between the customer and MAKINCAKECo. By submitting payment, you acknowledge and agree to all policies listed below. Terms are subject to change at any time without prior notice.</p>
+        
+        <div class="accordion-container reveal">
+            
+            <details class="accordion-item">
+                <summary>💳 Payments</summary>
+                <div class="accordion-content">
+                    <p>A 50% non-refundable retainer is required to secure your order and event date. Orders are not confirmed until the retainer is received.</p>
+                    <p><strong>The remaining balance:</strong></p>
+                    <ul class="bullet-list" style="margin-bottom: 1rem;">
+                        <li>Is due by the date listed on your invoice</li>
+                        <li>Must be paid in full before pickup or delivery</li>
+                    </ul>
+                    <p><strong>Please note:</strong></p>
+                    <ul class="bullet-list" style="margin-bottom: 1rem;">
+                        <li>All sales are final</li>
+                        <li>All payments are non-refundable</li>
+                        <li>Store credit may be issued at the discretion of MAKINCAKECo</li>
+                    </ul>
+                    <p>Any requests for adjustments must be submitted in writing via email. Please allow up to 14 days for review and response. Late payments may result in order cancellation or additional fees.</p>
+                </div>
+            </details>
+
+            <details class="accordion-item">
+                <summary>💍 Wedding & Large Event Orders</summary>
+                <div class="accordion-content">
+                    <ul class="bullet-list" style="margin-bottom: 1rem;">
+                        <li>A 50% non-refundable retainer is required to reserve your date</li>
+                        <li>Final payment is due 14 days prior to the event</li>
+                    </ul>
+                    <p>Orders placed within 14 days of the event require full payment upfront.</p>
+                    <p>Changes to design, size, or flavors must be submitted at least 2 weeks before the event. Changes requested after this time are not guaranteed and may include additional fees.</p>
+                    <p>All changes must be submitted via email. Requests sent through text or social media will not be accepted. Rescheduling may be subject to availability and additional fees.</p>
+                </div>
+            </details>
+
+            <details class="accordion-item">
+                <summary>🎨 Design & Color Disclaimer</summary>
+                <div class="accordion-content">
+                    <p>Every cake is handcrafted, and slight variations in design, color, and decoration may occur.</p>
+                    <p>While inspiration photos are helpful, MAKINCAKECo does not replicate cakes exactly but instead creates a custom version based on your request.</p>
+                    <p>Color matching is not exact. Differences may occur due to lighting, ingredients, and screen displays. For best results, physical color references are recommended.</p>
+                    <p>MAKINCAKECo reserves the right to make structural or design adjustments to ensure stability and quality.</p>
+                </div>
+            </details>
+
+            <details class="accordion-item">
+                <summary>🏠 Setup & Environment</summary>
+                <div class="accordion-content">
+                    <p>Cakes must be placed in a cool, indoor environment (below 75°F).</p>
+                    <p>MAKINCAKECo reserves the right to refuse setup if the environment is unsafe (excess heat, unstable surfaces, etc.).</p>
+                    <p><strong>Once the cake is delivered and set up:</strong></p>
+                    <ul class="bullet-list" style="margin-bottom: 1rem;">
+                        <li>It should not be moved</li>
+                        <li>MAKINCAKECo is not responsible for damage caused afterward</li>
+                    </ul>
+                    <p style="margin-bottom: 0;">If picking up your order, you assume full responsibility once the cake leaves the premises.</p>
+                </div>
+            </details>
+
+            <details class="accordion-item">
+                <summary>⚠️ Allergy Notice</summary>
+                <div class="accordion-content">
+                    <p>Products may contain or come into contact with common allergens including:</p>
+                    <ul class="bullet-list" style="margin-bottom: 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));">
+                        <li>Milk</li>
+                        <li>Wheat</li>
+                        <li>Nuts</li>
+                        <li>Soy</li>
+                    </ul>
+                    <p style="margin-bottom: 0;">It is the customer’s responsibility to inform guests of any allergy risks.</p>
+                </div>
+            </details>
+
+            <details class="accordion-item">
+                <summary>📸 Rights & Use</summary>
+                <div class="accordion-content">
+                    <p style="margin-bottom: 0;">MAKINCAKECo reserves the right to photograph and use images of all products for marketing and promotional purposes.</p>
+                </div>
+            </details>
+
+            <details class="accordion-item">
+                <summary>⚖️ Disputes</summary>
+                <div class="accordion-content">
+                    <p>Any concerns must be submitted via email within 7 days of your event date.</p>
+                    <p style="margin-bottom: 0;">All payments are non-refundable. Any resolution, if applicable, will be issued as store credit only.</p>
+                </div>
+            </details>
+
+            <details class="accordion-item">
+                <summary>❌ Cancellations</summary>
+                <div class="accordion-content">
+                    <p>Cancellations must be submitted in writing at least 72 hours prior to the scheduled date.</p>
+                    <p style="margin-bottom: 0;">Approved cancellations will receive store credit only. Retainers remain non-refundable.</p>
+                </div>
+            </details>
+
+        </div>
+        
+        <p class="reveal" style="text-align: center; max-width: 600px; margin: 3rem auto 0; font-weight: 600; color: var(--primary-dark);">
+            MAKINCAKECo is committed to providing high-quality, custom desserts and a professional experience for every order.
+        </p>
+    </section>
 
     <section id="contact">
         <div class="contact-cta reveal">
